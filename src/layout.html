@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" data-nav="{{nav}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta name="theme-color" content="#4957A5">
+<link rel="icon" type="image/svg+xml" href="static/img/detectmate-mark.svg">
+<link rel="icon" type="image/png" sizes="64x64" href="static/img/detectmate-favicon.png">
+<!-- Google Fonts: a third-party request. Self-host these before launch if GDPR matters (see README). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="static/css/site.css">
+<script>try{var d=document.documentElement;d.classList.add("js");addEventListener("load",function(){if(document.querySelector(".frame:not(.is-live)"))d.classList.remove("js")});if(d.dataset.nav==="home"&&!sessionStorage.getItem("dm-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches)d.classList.add("is-intro")}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="index.html" aria-label="DetectMate home">
+      <svg class="brand__mark" viewBox="162 0 264.13 207.95" width="41" height="32" aria-hidden="true">
+        <polygon class="brand__grey" points="366 83.2 366 83.2 330.04 20.79 258.05 145.56 294.07 207.95 330.26 145.18 330.08 145.56 354.1 187.15 426.13 187.15 366 83.2" fill="#c6c6c6"/>
+        <polygon class="brand__blue" points="246.04 0 174.01 0 222.03 83.18 162 187.15 234.04 187.15 293.97 83.02 246.04 0" fill="#4e5aa5"/>
+      </svg>
+      <img src="static/img/detectmate-wordmark.svg" alt="DetectMate" width="149" height="19">
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="benchmarks.html"{{nav_benchmarks}}>Benchmarks</a>
+      <details class="menu">
+        <summary class="menu__toggle">Docs</summary>
+        <ul class="menu__list">
+          <li><a href="https://ait-detectmate.github.io/DetectMateLibrary/latest/">Library</a></li>
+          <li><a href="https://ait-detectmate.github.io/DetectMateService/latest/">Service</a></li>
+        </ul>
+      </details>
+      <details class="menu menu--github">
+        <summary class="menu__toggle btn btn--primary btn--small">GitHub</summary>
+        <ul class="menu__list">
+          <li><a href="https://github.com/ait-detectmate/DetectMateLibrary">Library</a></li>
+          <li><a href="https://github.com/ait-detectmate/DetectMateService">Service</a></li>
+        </ul>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{{content}}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <div class="site-footer__brand">
+      <img src="static/img/detectmate-mark.svg" alt="" width="30" height="24">
+      <span>DetectMate Library · EUPL-1.2</span>
+    </div>
+    <nav class="site-footer__links" aria-label="DetectMate projects">
+      <a href="https://github.com/ait-detectmate/DetectMateLibrary">Library</a>
+      <a href="https://github.com/ait-detectmate/DetectMateService">Service</a>
+      <a href="https://github.com/ait-detectmate/DetectMatePerformance">Performance</a>
+      <a href="https://ait-detectmate.github.io/DetectMateLibrary/latest/">Library docs</a>
+      <a href="https://ait-detectmate.github.io/DetectMateService/latest/">Service docs</a>
+      <a href="https://github.com/ait-testbed/attackmate" class="link--attackmate">AttackMate</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="static/js/site.js" defer></script>
+</body>
+</html>

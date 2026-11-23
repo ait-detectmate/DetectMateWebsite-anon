@@ -1,0 +1,154 @@
+<section class="hero">
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">Open&nbsp;source&nbsp;· Python&nbsp;· Log&nbsp;parsing&nbsp;· Anomaly&nbsp;detection&nbsp;· Streaming</p>
+      <h1>Build a detection pipeline out of parts that already work.</h1>
+      <p class="lede">DetectMate Library is a component-based library for parsing logs and finding anomalies in them. {{parser_count}} parsers, {{detector_count}} detectors and {{aggregator_count}} alert aggregators ship ready to use — from rule-based checks to DeepLog and LogBERT — and they process logs as they arrive, not only in batch.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="https://ait-detectmate.github.io/DetectMateLibrary/latest/user_guide/quickstart/">Quickstart</a>
+        <a class="btn btn--outline" href="benchmarks.html">How well does it detect?</a>
+      </div>
+    </div>
+
+    <!-- Library | Service: CSS-only radios; the checked one shows its panel, both share one grid cell -->
+    <div class="run">
+      <input class="visually-hidden" type="radio" name="run" id="run-library" checked>
+      <input class="visually-hidden" type="radio" name="run" id="run-service">
+      <div class="chips run__switch">
+        <span class="chips__label">Run it as</span>
+        <label class="chip" for="run-library">Library</label>
+        <label class="chip" for="run-service">Service</label>
+      </div>
+      <div class="run__panels">
+        <figure class="code code--library">
+          <figcaption class="code__label">pipeline.py <span class="code__status" hidden aria-hidden="true"><i></i><span>typing…</span></span></figcaption>
+<pre><code><span class="k">from</span> detectmatelibrary.helper.from_to <span class="k">import</span> From
+<span class="k">from</span> detectmatelibrary.parsers.template_matcher <span class="k">import</span> MatcherParser
+<span class="k">from</span> detectmatelibrary.detectors.new_value_detector <span class="k">import</span> NewValueDetector
+
+<span class="c"># parser_config, detector_config: see the Quickstart</span>
+parser = MatcherParser(name=<span class="s">"MatcherParser"</span>, config=parser_config)
+detector = NewValueDetector(name=<span class="s">"NewValueDetector"</span>, config=detector_config)
+
+<span class="k">for</span> event <span class="k">in</span> From.log(parser, <span class="s">"audit.log"</span>):
+    alert = detector.process(event)
+    <span class="k">if</span> alert <span class="k">is not</span> None:
+        print(alert)</code></pre>
+          <!-- a still frame of the stream: site.js animates it, and it is what no-JS and reduced-motion visitors see -->
+          <div class="code__in" aria-hidden="true">
+            <p class="code__pane-label">audit.log · incoming</p>
+            <div class="code__lines">
+              <div class="code__line is-parsed is-old"><span class="code__id">E1</span><span class="code__txt">type=SYSCALL msg=audit(<span class="v">1642723741.072:375</span>): syscall=<span class="v">59</span> success=yes pid=<span class="v">4127</span> comm=<span class="v">"cron"</span> exe=<span class="v">"/usr/sbin/cron"</span></span></div>
+              <div class="code__line is-parsed is-old"><span class="code__id">E3</span><span class="code__txt">type=CRED_DISP msg=audit(<span class="v">1642723741.488:376</span>): pid=<span class="v">4127</span> acct="root" exe="/usr/sbin/cron" res=success</span></div>
+              <div class="code__line is-parsed is-old"><span class="code__id">E2</span><span class="code__txt">type=USER_LOGIN msg=audit(<span class="v">1642723742.031:377</span>): pid=<span class="v">5530</span> acct=<span class="v">"deploy"</span> exe="/usr/sbin/sshd" addr=<span class="v">10.35.33.17</span> res=success</span></div>
+              <div class="code__line is-parsed is-old is-fired"><span class="code__id">E1</span><span class="code__txt">type=SYSCALL msg=audit(<span class="v">1642723742.604:378</span>): syscall=<span class="v">59</span> success=yes pid=<span class="v">6112</span> comm=<span class="v">"sh"</span> exe=<span class="v v--flag">"/tmp/.kx/sh"</span></span></div>
+              <div class="code__line is-parsed is-old"><span class="code__id">E1</span><span class="code__txt">type=SYSCALL msg=audit(<span class="v">1642723743.217:379</span>): syscall=<span class="v">2</span> success=yes pid=<span class="v">2210</span> comm=<span class="v">"sshd"</span> exe=<span class="v">"/usr/sbin/sshd"</span></span></div>
+            </div>
+          </div>
+          <div class="code__out" aria-hidden="true">
+            <p class="code__pane-label">stdout</p>
+            <div class="code__stdout"><div class="code__alert"><span class="code__key">detectorID:</span> "NewValueDetector"
+<span class="code__key">score:</span> 1
+<span class="code__key">alertDetails {</span>
+  <span class="code__key">key:</span> "EventID 1 - exe"
+  <span class="code__key">value:</span> "Unknown value: \'/tmp/.kx/sh\'"
+<span class="code__key">}</span></div></div>
+          </div>
+        </figure>
+        <figure class="code code--service">
+          <figcaption class="code__label">detector.yaml <span class="code__status" hidden aria-hidden="true"><i></i><span>typing…</span></span></figcaption>
+<pre><code><span class="c"># the service's settings; the detector's own config: see the tutorial</span>
+component_name: NewValueDetector01
+component_type: NewValueDetector
+engine_addr: <span class="s">"ipc:///run/detector.ipc"</span>
+engine_autostart: true
+out_addr:
+  - <span class="s">"ipc:///run/output.ipc"</span></code></pre>
+          <!-- the Service panel's still frame: the same parts and classes as the Library panel, plus the terminal -->
+          <div class="code__term" aria-hidden="true">
+            <p class="code__pane-label">terminal</p>
+            <div class="code__tline"><span class="c">$</span> detectmate --settings detector.yaml --config detector_config.yaml</div>
+            <div class="code__tline"><span class="k">INFO</span> engine started</div>
+          </div>
+          <div class="code__in" aria-hidden="true">
+            <p class="code__pane-label">access.log · via the parser service</p>
+            <div class="code__lines">
+              <div class="code__line is-parsed is-old"><span class="code__txt">10.0.0.4 - - [14/Oct/2026:09:53:21 +0000] "GET <span class="v">/</span> HTTP/1.1" 200 615 "-" "curl/8.5.0"</span></div>
+              <div class="code__line is-parsed is-old"><span class="code__txt">10.0.0.4 - - [14/Oct/2026:09:53:23 +0000] "GET <span class="v">/hello</span> HTTP/1.1" 200 12 "-" "curl/8.5.0"</span></div>
+              <div class="code__line is-parsed is-old"><span class="code__txt">10.0.0.9 - - [14/Oct/2026:09:53:26 +0000] "GET <span class="v">/static/app.css</span> HTTP/1.1" 200 2048 "-" "curl/8.5.0"</span></div>
+              <div class="code__line is-parsed is-old is-fired"><span class="code__txt">10.0.0.7 - - [14/Oct/2026:09:53:28 +0000] "GET <span class="v v--flag">/.env</span> HTTP/1.1" 404 153 "-" "curl/8.5.0"</span></div>
+              <div class="code__line is-parsed is-old"><span class="code__txt">10.0.0.4 - - [14/Oct/2026:09:53:31 +0000] "GET <span class="v">/api/v1/status</span> HTTP/1.1" 200 27 "-" "curl/8.5.0"</span></div>
+            </div>
+          </div>
+          <div class="code__out" aria-hidden="true">
+            <p class="code__pane-label">output.log</p>
+            <div class="code__stdout"><div class="code__alert">{"detectorID":"NewValueDetector",<wbr>"alertID":"NewValueDetector_10",<wbr>"score":1.0,<wbr>"alertsObtain":{"Global - URL":"Unknown value: '/.env'"}}</div></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap">
+    <h2 class="section__label">The pipeline</h2>
+    <div class="flow">
+      <ol class="pipeline">
+        <li class="stage stage--parser"><div class="stage__box"><div class="stage__inner">
+          <span class="stage__name">Parser</span>
+          <span class="stage__desc">Turns raw log lines into structured events.</span>
+          <span class="stage__count">{{parser_count}} available</span>
+        </div></div><i class="stage__stop" aria-hidden="true"></i></li>
+        <li class="stage stage--detector"><div class="stage__box"><div class="stage__inner">
+          <span class="stage__name">Detector</span>
+          <span class="stage__desc">Emits an alert when an event looks anomalous.</span>
+          <span class="stage__count">{{detector_count}} available</span>
+        </div></div><i class="stage__stop" aria-hidden="true"></i></li>
+        <li class="stage stage--aggregation"><div class="stage__box"><div class="stage__inner">
+          <span class="stage__name">Alert aggregation</span>
+          <span class="stage__desc">Combines alerts from several detectors.</span>
+          <span class="stage__count">{{aggregator_count}} available</span>
+        </div></div><i class="stage__stop" aria-hidden="true"></i></li>
+        <li class="stage stage--sink"><div class="stage__box"><div class="stage__inner">
+          <span class="stage__name">Your sink</span>
+          <span class="stage__desc">A SIEM, a file, or the DetectMate Service.</span>
+        </div></div><i class="stage__stop" aria-hidden="true"></i></li>
+      </ol>
+      <div class="flow__rail" aria-hidden="true"><span class="flow__src">audit.log</span></div>
+      <div class="flow__tokens" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <ul class="points">
+      <li>
+        <h3>Streaming, not only batch</h3>
+        <p>Components consume events as they arrive, so the same pipeline runs online for real-time detection and offline over archived logs.</p>
+      </li>
+      <li>
+        <h3>Rules to deep learning, one interface</h3>
+        <p>Cheap statistical checks and DeepLog or LogBERT share the same API — run them side by side and aggregate what they find.</p>
+      </li>
+      <li>
+        <h3>Per event, windowed or batched</h3>
+        <p>A detector can look at each event, a sliding window, or fixed-size batches, set by its buffer mode.</p>
+      </li>
+      <li>
+        <h3>Your own component in very little code</h3>
+        <p><code>mate create</code> scaffolds a parser, detector or alert aggregator workspace with a template, tests and example data.</p>
+      </li>
+    </ul>
+
+    <aside class="family">
+      <h2 class="section__label">Part of DetectMate</h2>
+      <p>Deploy detectors as microservices with the <a href="https://github.com/ait-detectmate/DetectMateService">DetectMate Service</a>. The Drain, Template Tree and Auto parsers build on <a href="https://github.com/ait-detectmate/DetectMatePerformance">DetectMate Performance</a>, which is also the faster choice for large batch jobs.</p>
+      <p class="family__attack">
+        <svg width="24" height="14" viewBox="0 0 114 66" aria-hidden="true"><polygon points="0,66 28,0 56,66 42,66 28,30 14,66"/><polygon points="58,66 86,0 114,66 100,66 86,30 72,66"/></svg>
+        <span>Test your detectors against automated attacks from <a href="https://github.com/ait-testbed/attackmate">AttackMate</a>.</span>
+      </p>
+    </aside>
+  </div>
+</section>

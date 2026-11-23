@@ -1,0 +1,122 @@
+{
+  "families": {
+    "events": {
+      "label": "Events"
+    },
+    "values": {
+      "label": "Values"
+    },
+    "rules_baseline": {
+      "label": "Rules & baseline"
+    }
+  },
+  "detectors": [
+    {
+      "id": "new_event",
+      "name": "New Event",
+      "family": "events",
+      "description": "Alerts when a log template that has never been seen appears — an unexpected type of event in the environment.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/new_event/"
+    },
+    {
+      "id": "event_sequence",
+      "name": "Event Sequence",
+      "family": "events",
+      "description": "Alerts when consecutive events occur in an order never observed during training — even when each event is benign on its own.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/event_sequence/"
+    },
+    {
+      "id": "scvs",
+      "name": "SCVS",
+      "family": "events",
+      "description": "Sequence Count Vector Set. Alerts on event count vectors that were not present in the training data.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/scvs_detector/"
+    },
+    {
+      "id": "ecvc",
+      "name": "ECVC",
+      "family": "events",
+      "description": "Event Count Vector Clustering. Scores new count vectors by their distance from the ones seen in training.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/ecvc_detector/",
+      "paper": "https://dl.acm.org/doi/10.1145/3660768"
+    },
+    {
+      "id": "deeplog",
+      "name": "DeepLog",
+      "family": "events",
+      "description": "Deep-learning sequence model based on the DeepLog paper.",
+      "training": "Trains a neural model",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/deeplog/",
+      "paper": "https://dl.acm.org/doi/10.1145/3133956.3134015"
+    },
+    {
+      "id": "logbert",
+      "name": "LogBERT",
+      "family": "events",
+      "description": "Transformer-based model based on the LogBERT paper.",
+      "training": "Trains a neural model",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/logbert/",
+      "paper": "https://ieeexplore.ieee.org/document/9534113"
+    },
+    {
+      "id": "new_value",
+      "name": "New Value",
+      "family": "values",
+      "description": "Alerts when a configured field takes a value it has never had before, such as a new user name, IP address or process.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/new_value/"
+    },
+    {
+      "id": "new_value_combo",
+      "name": "New Value Combo",
+      "family": "values",
+      "description": "Alerts when values that are each familiar appear together in a combination that has never been seen.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/combo/"
+    },
+    {
+      "id": "value_range",
+      "name": "Value Range",
+      "family": "values",
+      "description": "Alerts when a numeric field falls outside the range it has been observed in.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/value_range/"
+    },
+    {
+      "id": "charset",
+      "name": "Charset",
+      "family": "values",
+      "description": "Alerts when characters that have never been seen appear in a configured field.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/charset/"
+    },
+    {
+      "id": "bigram_frequency",
+      "name": "Bigram Frequency",
+      "family": "values",
+      "description": "Alerts when the character pairs in a value are improbable under a learned per-field bigram model, with an optional English-language fallback.",
+      "training": "Learns from logs",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/bigram_frequency/"
+    },
+    {
+      "id": "rule",
+      "name": "Rule",
+      "family": "rules_baseline",
+      "description": "Raises alerts based on a configurable set of rules.",
+      "training": "Configured rules",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/rule_based/"
+    },
+    {
+      "id": "random",
+      "name": "Random",
+      "family": "rules_baseline",
+      "description": "Emits synthetic alerts at a configurable rate. Use it for integration and load testing, or as the floor every other detector has to beat.",
+      "training": "No training",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/detectors/random_detector/"
+    }
+  ]
+}

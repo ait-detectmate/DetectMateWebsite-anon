@@ -1,0 +1,40 @@
+{
+  "parsers": [
+    {
+      "id": "template_matcher",
+      "name": "Template Matcher",
+      "description": "Matches logs against templates you supply and extracts the values at each <*> wildcard. Built for streaming.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/parsers/template_matcher/"
+    },
+    {
+      "id": "template_tree_matcher",
+      "name": "Template Tree Matcher",
+      "description": "Tree-based template matching — faster than the Template Matcher for batch workloads.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/parsers/template_tree_matcher/"
+    },
+    {
+      "id": "drain",
+      "name": "Drain",
+      "description": "Derives templates from the logs themselves, following the Drain publication.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/parsers/drain_parser/"
+    },
+    {
+      "id": "auto",
+      "name": "Auto Parser",
+      "description": "Picks the best-matching regex and templates from a built-in dataset. No setup, but only for log types it already knows.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/parsers/auto_parser/"
+    },
+    {
+      "id": "json",
+      "name": "JSON Parser",
+      "description": "Flattens JSON logs into dot-separated fields, and can hand one field on to a Template Matcher.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/parsers/json_parser/"
+    },
+    {
+      "id": "logbatcher",
+      "name": "LogBatcher",
+      "description": "Infers templates with any OpenAI-compatible LLM. No training data or labelled examples needed.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/parsers/logbatcher_parser/"
+    }
+  ]
+}

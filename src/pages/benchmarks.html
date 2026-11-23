@@ -1,0 +1,37 @@
+<section class="page-head">
+  <div class="wrap page-head__inner">
+    <div>
+      <h1>Detection quality by detector and dataset</h1>
+      <p class="lede">Scores on labelled log datasets, per detector, by log type or by dataset. No detector is best everywhere. Use the tables and plots to see which one fits your data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+{{benchmark_banner}}
+    <h2 class="section__title">Detectors</h2>
+{{detector_frame}}
+  </div>
+</section>
+
+<section class="section section--rule">
+  <div class="wrap split split--even">
+    <div class="prose">
+      <h2 class="section__title">Reading the tables and plots</h2>
+      <p>Anomalies are rare, so a high F1 can still mean an analyst sees many false alarms per shift. Look at precision when alert volume is what hurts. Look at recall when a missed incident is what hurts.</p>
+      <p>Precision depends on how many anomalies a dataset holds. The anomaly share, in percent, is in each column header of the tables.</p>
+      <p>A log type's value is the mean over its datasets. Precision is averaged only over the datasets with alerts. F1 is the mean of the datasets' F1, so it need not equal 2PR/(P+R) of the precision and recall shown next to it.</p>
+      <p>"no alerts" means the detector raised no alert on that dataset. In the log-type view it means the detector alerted on none of that log type's datasets. Either way its precision is undefined. "not evaluated" means the detector has no results yet.</p>
+      <p>In a plot, each row is one detector, summarising its values over the log types or the datasets, depending on the view. The box spans the middle half of the values, and its line marks the middle value. The whiskers reach the lowest and the highest value. With fewer than 3 values there is no box, only a line from the lowest to the highest value and the middle line. The exact values are in the tables. Precision leaves out the values without alerts, and a row with none left says "no alerts". The events-per-second axis is logarithmic.</p>
+      <p>Every table and plot ranks its rows by their middle value for the metric and view shown, highest first, and for events per second fastest first. Baselines are ranked apart, below their divider. Rows without a value come last.</p>
+    </div>
+    <div class="prose">
+      <h2 class="section__title">Where the numbers come from</h2>
+      <p>Each dataset is scored at the train/test cut with the highest mean F1. BGL uses a random split. HDFS is scored per block.</p>
+      <p>Events per second covers detection only, on pre-parsed events, in one process, on the hardware named in the banner above. It does not include parsing.</p>
+      <p>Every number on this page is read from <code>data/benchmarks.json</code> in the <a href="https://github.com/ait-detectmate/DetectMateWebsite">website repository</a>.</p>
+      <p>Click a dataset name for its source. Click a detector for what it does.</p>
+    </div>
+  </div>
+</section>

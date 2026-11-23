@@ -1,0 +1,2552 @@
+{
+  "_readme": "Generated from the DetectMate benchmark runs by an export script; do not edit by hand, rerun the export. log_types: the log types, each with the range of its datasets' anomaly shares in percent. datasets: the evaluated datasets, each with its log type, source and the anomaly share of its evaluated lines in percent. not_evaluated: detectors without results. baselines: the deep-learning detectors DetectMate is compared with. results: per detector and dataset, precision, recall, F1 and detection events per second, measured on the hardware named in environment. log_type_results: the same per log type, the mean over its datasets (precision over the datasets with alerts). Where a detector raised no alerts, precision is null and no_alerts is true.",
+  "library_version": null,
+  "generated_at": "2026-11-22",
+  "environment": {
+    "hardware": "OVH c3-16: 8 vCPU AMD EPYC Milan, 15 GB; one run at a time; CPU only"
+  },
+  "log_types": [
+    {
+      "id": "audit",
+      "name": "Audit",
+      "anomaly_pct": [
+        0.616,
+        24.68
+      ]
+    },
+    {
+      "id": "apache-access",
+      "name": "Apache access",
+      "anomaly_pct": [
+        7.243,
+        97.068
+      ]
+    },
+    {
+      "id": "dnsmasq",
+      "name": "dnsmasq",
+      "anomaly_pct": [
+        18.345,
+        18.345
+      ]
+    },
+    {
+      "id": "bgl",
+      "name": "BGL",
+      "anomaly_pct": [
+        7.392,
+        7.392
+      ]
+    },
+    {
+      "id": "hdfs",
+      "name": "HDFS",
+      "anomaly_pct": [
+        2.158,
+        2.158
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "id": "audit-fox",
+      "name": "Audit fox",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 1.316
+    },
+    {
+      "id": "audit-harrison",
+      "name": "Audit harrison",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 2.12
+    },
+    {
+      "id": "audit-russell-mitchell",
+      "name": "Audit russell mitchell",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 1.94
+    },
+    {
+      "id": "audit-santos",
+      "name": "Audit santos",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 4.194
+    },
+    {
+      "id": "audit-shaw",
+      "name": "Audit shaw",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 1.399
+    },
+    {
+      "id": "audit-wardbeck",
+      "name": "Audit wardbeck",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 3.253
+    },
+    {
+      "id": "audit-wheeler",
+      "name": "Audit wheeler",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 0.616
+    },
+    {
+      "id": "audit-wilson",
+      "name": "Audit wilson",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 2.111
+    },
+    {
+      "id": "sharefile-russell-mitchell",
+      "name": "ShareFile russell mitchell",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 0.909
+    },
+    {
+      "id": "sharefile-sl100-audit",
+      "name": "ShareFile sl100 audit",
+      "log_type": "audit",
+      "url": "https://zenodo.org/records/17659656",
+      "anomaly_pct": 24.68
+    },
+    {
+      "id": "apache-fox",
+      "name": "Apache fox",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 97.068
+    },
+    {
+      "id": "apache-harrison",
+      "name": "Apache harrison",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 92.061
+    },
+    {
+      "id": "apache-russell-mitchell",
+      "name": "Apache russell mitchell",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 53.261
+    },
+    {
+      "id": "apache-santos",
+      "name": "Apache santos",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 20.648
+    },
+    {
+      "id": "apache-shaw",
+      "name": "Apache shaw",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 31.4
+    },
+    {
+      "id": "apache-wardbeck",
+      "name": "Apache wardbeck",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 7.243
+    },
+    {
+      "id": "apache-wheeler",
+      "name": "Apache wheeler",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 79.522
+    },
+    {
+      "id": "apache-wilson",
+      "name": "Apache wilson",
+      "log_type": "apache-access",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 91.78
+    },
+    {
+      "id": "firewall-russell-mitchell",
+      "name": "Firewall russell mitchell",
+      "log_type": "dnsmasq",
+      "url": "https://zenodo.org/records/5789064",
+      "anomaly_pct": 18.345
+    },
+    {
+      "id": "bgl",
+      "name": "BGL",
+      "log_type": "bgl",
+      "url": "https://github.com/logpai/loghub",
+      "anomaly_pct": 7.392
+    },
+    {
+      "id": "hdfs",
+      "name": "HDFS",
+      "log_type": "hdfs",
+      "url": "https://github.com/logpai/loghub",
+      "anomaly_pct": 2.158
+    }
+  ],
+  "not_evaluated": [
+    "random",
+    "rule",
+    "scvs"
+  ],
+  "baselines": [
+    "deeplog",
+    "logbert"
+  ],
+  "results": [
+    {
+      "detector": "new_event",
+      "dataset": "audit-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 20040,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "audit-harrison",
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.222,
+      "events_per_sec": 19920,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "audit-russell-mitchell",
+      "precision": 1.0,
+      "recall": 0.111,
+      "f1": 0.2,
+      "events_per_sec": 19617,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "audit-santos",
+      "precision": 1.0,
+      "recall": 0.105,
+      "f1": 0.19,
+      "events_per_sec": 19090,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "audit-shaw",
+      "precision": 0.5,
+      "recall": 0.105,
+      "f1": 0.174,
+      "events_per_sec": 19673,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "audit-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 19629,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "audit-wheeler",
+      "precision": 1.0,
+      "recall": 0.143,
+      "f1": 0.25,
+      "events_per_sec": 20132,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "audit-wilson",
+      "precision": 1.0,
+      "recall": 0.045,
+      "f1": 0.087,
+      "events_per_sec": 19678,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 19990,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.244,
+      "recall": 0.005,
+      "f1": 0.009,
+      "events_per_sec": 21174,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16726,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-harrison",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16505,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15693,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-santos",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16311,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-shaw",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16654,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16961,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-wheeler",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16701,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "apache-wilson",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16413,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "firewall-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 18012,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "dataset": "bgl",
+      "precision": 0.999,
+      "recall": 0.795,
+      "f1": 0.885,
+      "events_per_sec": 6893,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "dataset": "hdfs",
+      "precision": 1.0,
+      "recall": 0.277,
+      "f1": 0.434,
+      "events_per_sec": 19855,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-fox",
+      "precision": 0.9,
+      "recall": 0.474,
+      "f1": 0.621,
+      "events_per_sec": 17367,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-harrison",
+      "precision": 0.952,
+      "recall": 0.833,
+      "f1": 0.889,
+      "events_per_sec": 15937,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-russell-mitchell",
+      "precision": 0.875,
+      "recall": 0.778,
+      "f1": 0.824,
+      "events_per_sec": 16797,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-santos",
+      "precision": 0.941,
+      "recall": 0.842,
+      "f1": 0.889,
+      "events_per_sec": 13578,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-shaw",
+      "precision": 0.833,
+      "recall": 0.789,
+      "f1": 0.811,
+      "events_per_sec": 16610,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-wardbeck",
+      "precision": 0.875,
+      "recall": 0.368,
+      "f1": 0.519,
+      "events_per_sec": 17091,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-wheeler",
+      "precision": 0.917,
+      "recall": 0.786,
+      "f1": 0.846,
+      "events_per_sec": 17487,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "audit-wilson",
+      "precision": 0.833,
+      "recall": 0.455,
+      "f1": 0.588,
+      "events_per_sec": 14685,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 17109,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_value",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.45,
+      "recall": 0.626,
+      "f1": 0.523,
+      "events_per_sec": 15201,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-fox",
+      "precision": 0.935,
+      "recall": 0.002,
+      "f1": 0.003,
+      "events_per_sec": 15175,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-harrison",
+      "precision": 0.073,
+      "recall": 0.002,
+      "f1": 0.003,
+      "events_per_sec": 15009,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-russell-mitchell",
+      "precision": 0.832,
+      "recall": 1.0,
+      "f1": 0.908,
+      "events_per_sec": 12906,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-santos",
+      "precision": 0.933,
+      "recall": 0.979,
+      "f1": 0.956,
+      "events_per_sec": 13837,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-shaw",
+      "precision": 0.486,
+      "recall": 0.804,
+      "f1": 0.606,
+      "events_per_sec": 12985,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-wardbeck",
+      "precision": 0.002,
+      "recall": 0.003,
+      "f1": 0.003,
+      "events_per_sec": 14096,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-wheeler",
+      "precision": 0.705,
+      "recall": 0.189,
+      "f1": 0.298,
+      "events_per_sec": 13911,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "apache-wilson",
+      "precision": 0.115,
+      "recall": 0.002,
+      "f1": 0.003,
+      "events_per_sec": 14848,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "firewall-russell-mitchell",
+      "precision": 0.009,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16736,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "bgl",
+      "precision": 0.006,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6433,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "dataset": "hdfs",
+      "precision": 1.0,
+      "recall": 0.446,
+      "f1": 0.617,
+      "events_per_sec": 16232,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-fox",
+      "precision": 0.733,
+      "recall": 0.579,
+      "f1": 0.647,
+      "events_per_sec": 9522,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-harrison",
+      "precision": 0.95,
+      "recall": 0.792,
+      "f1": 0.864,
+      "events_per_sec": 10895,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-russell-mitchell",
+      "precision": 0.875,
+      "recall": 0.778,
+      "f1": 0.824,
+      "events_per_sec": 11718,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-santos",
+      "precision": 0.938,
+      "recall": 0.789,
+      "f1": 0.857,
+      "events_per_sec": 11042,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-shaw",
+      "precision": 0.609,
+      "recall": 0.737,
+      "f1": 0.667,
+      "events_per_sec": 9728,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-wardbeck",
+      "precision": 0.917,
+      "recall": 0.579,
+      "f1": 0.71,
+      "events_per_sec": 8924,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-wheeler",
+      "precision": 0.917,
+      "recall": 0.786,
+      "f1": 0.846,
+      "events_per_sec": 10292,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "audit-wilson",
+      "precision": 0.938,
+      "recall": 0.682,
+      "f1": 0.789,
+      "events_per_sec": 7297,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 17512,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.589,
+      "recall": 0.606,
+      "f1": 0.598,
+      "events_per_sec": 8462,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-fox",
+      "precision": 0.99,
+      "recall": 1.0,
+      "f1": 0.995,
+      "events_per_sec": 8136,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-harrison",
+      "precision": 0.045,
+      "recall": 0.003,
+      "f1": 0.005,
+      "events_per_sec": 11421,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-russell-mitchell",
+      "precision": 0.832,
+      "recall": 1.0,
+      "f1": 0.908,
+      "events_per_sec": 8270,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-santos",
+      "precision": 0.933,
+      "recall": 0.979,
+      "f1": 0.956,
+      "events_per_sec": 13572,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-shaw",
+      "precision": 0.463,
+      "recall": 0.807,
+      "f1": 0.588,
+      "events_per_sec": 8060,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-wardbeck",
+      "precision": 0.001,
+      "recall": 0.004,
+      "f1": 0.001,
+      "events_per_sec": 11476,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-wheeler",
+      "precision": 0.697,
+      "recall": 0.192,
+      "f1": 0.301,
+      "events_per_sec": 11148,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "apache-wilson",
+      "precision": 0.081,
+      "recall": 0.002,
+      "f1": 0.004,
+      "events_per_sec": 11476,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "firewall-russell-mitchell",
+      "precision": 0.223,
+      "recall": 0.896,
+      "f1": 0.357,
+      "events_per_sec": 12407,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "bgl",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6700,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "dataset": "hdfs",
+      "precision": 0.021,
+      "recall": 0.539,
+      "f1": 0.04,
+      "events_per_sec": 13766,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-fox",
+      "precision": 0.75,
+      "recall": 0.158,
+      "f1": 0.261,
+      "events_per_sec": 17282,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-harrison",
+      "precision": 0.8,
+      "recall": 0.167,
+      "f1": 0.276,
+      "events_per_sec": 17751,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-russell-mitchell",
+      "precision": 0.75,
+      "recall": 0.333,
+      "f1": 0.462,
+      "events_per_sec": 16995,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-santos",
+      "precision": 0.8,
+      "recall": 0.211,
+      "f1": 0.333,
+      "events_per_sec": 17379,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-shaw",
+      "precision": 0.571,
+      "recall": 0.211,
+      "f1": 0.308,
+      "events_per_sec": 17778,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-wardbeck",
+      "precision": 0.75,
+      "recall": 0.158,
+      "f1": 0.261,
+      "events_per_sec": 17638,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-wheeler",
+      "precision": 0.75,
+      "recall": 0.214,
+      "f1": 0.333,
+      "events_per_sec": 13956,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "audit-wilson",
+      "precision": 0.75,
+      "recall": 0.273,
+      "f1": 0.4,
+      "events_per_sec": 11304,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16898,
+      "no_alerts": true
+    },
+    {
+      "detector": "value_range",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.584,
+      "recall": 0.61,
+      "f1": 0.596,
+      "events_per_sec": 13197,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-fox",
+      "precision": 0.308,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 14316,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-harrison",
+      "precision": 0.9,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 14686,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-russell-mitchell",
+      "precision": 0.054,
+      "recall": 0.001,
+      "f1": 0.001,
+      "events_per_sec": 15042,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-santos",
+      "precision": 0.912,
+      "recall": 0.016,
+      "f1": 0.031,
+      "events_per_sec": 14494,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-shaw",
+      "precision": 0.03,
+      "recall": 0.0,
+      "f1": 0.001,
+      "events_per_sec": 15215,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-wardbeck",
+      "precision": 0.886,
+      "recall": 0.011,
+      "f1": 0.022,
+      "events_per_sec": 13880,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-wheeler",
+      "precision": 0.545,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15132,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "apache-wilson",
+      "precision": 0.348,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 14890,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "firewall-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16515,
+      "no_alerts": true
+    },
+    {
+      "detector": "value_range",
+      "dataset": "bgl",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6423,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "dataset": "hdfs",
+      "precision": 1.0,
+      "recall": 0.446,
+      "f1": 0.617,
+      "events_per_sec": 16477,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-fox",
+      "precision": 0.833,
+      "recall": 0.263,
+      "f1": 0.4,
+      "events_per_sec": 14522,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-harrison",
+      "precision": 0.952,
+      "recall": 0.833,
+      "f1": 0.889,
+      "events_per_sec": 15611,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-russell-mitchell",
+      "precision": 0.875,
+      "recall": 0.778,
+      "f1": 0.824,
+      "events_per_sec": 15394,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-santos",
+      "precision": 0.941,
+      "recall": 0.842,
+      "f1": 0.889,
+      "events_per_sec": 15324,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-shaw",
+      "precision": 0.833,
+      "recall": 0.789,
+      "f1": 0.811,
+      "events_per_sec": 15411,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-wardbeck",
+      "precision": 0.75,
+      "recall": 0.158,
+      "f1": 0.261,
+      "events_per_sec": 15707,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-wheeler",
+      "precision": 0.917,
+      "recall": 0.786,
+      "f1": 0.846,
+      "events_per_sec": 16006,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "audit-wilson",
+      "precision": 0.818,
+      "recall": 0.409,
+      "f1": 0.545,
+      "events_per_sec": 14523,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15599,
+      "no_alerts": true
+    },
+    {
+      "detector": "charset",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.5,
+      "recall": 0.615,
+      "f1": 0.552,
+      "events_per_sec": 15108,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-fox",
+      "precision": 0.995,
+      "recall": 1.0,
+      "f1": 0.997,
+      "events_per_sec": 10882,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-harrison",
+      "precision": 0.045,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 13862,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-russell-mitchell",
+      "precision": 0.832,
+      "recall": 1.0,
+      "f1": 0.908,
+      "events_per_sec": 12079,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-santos",
+      "precision": 0.72,
+      "recall": 0.994,
+      "f1": 0.835,
+      "events_per_sec": 12432,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-shaw",
+      "precision": 0.622,
+      "recall": 0.791,
+      "f1": 0.697,
+      "events_per_sec": 11568,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-wardbeck",
+      "precision": 0.079,
+      "recall": 0.023,
+      "f1": 0.036,
+      "events_per_sec": 13625,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-wheeler",
+      "precision": 0.861,
+      "recall": 0.189,
+      "f1": 0.31,
+      "events_per_sec": 13455,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "apache-wilson",
+      "precision": 0.823,
+      "recall": 0.041,
+      "f1": 0.078,
+      "events_per_sec": 13420,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "firewall-russell-mitchell",
+      "precision": 0.223,
+      "recall": 0.894,
+      "f1": 0.357,
+      "events_per_sec": 12488,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "bgl",
+      "precision": 0.009,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6309,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "dataset": "hdfs",
+      "precision": 1.0,
+      "recall": 0.002,
+      "f1": 0.003,
+      "events_per_sec": 15757,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-fox",
+      "precision": 0.5,
+      "recall": 0.842,
+      "f1": 0.627,
+      "events_per_sec": 15039,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-harrison",
+      "precision": 0.821,
+      "recall": 0.958,
+      "f1": 0.885,
+      "events_per_sec": 18954,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-russell-mitchell",
+      "precision": 0.8,
+      "recall": 0.889,
+      "f1": 0.842,
+      "events_per_sec": 18753,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-santos",
+      "precision": 0.692,
+      "recall": 0.947,
+      "f1": 0.8,
+      "events_per_sec": 18564,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-shaw",
+      "precision": 0.419,
+      "recall": 0.947,
+      "f1": 0.581,
+      "events_per_sec": 18686,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-wardbeck",
+      "precision": 0.783,
+      "recall": 0.947,
+      "f1": 0.857,
+      "events_per_sec": 19066,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-wheeler",
+      "precision": 0.929,
+      "recall": 0.929,
+      "f1": 0.929,
+      "events_per_sec": 19545,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "audit-wilson",
+      "precision": 0.618,
+      "recall": 0.955,
+      "f1": 0.75,
+      "events_per_sec": 18857,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 18812,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.225,
+      "recall": 0.7,
+      "f1": 0.34,
+      "events_per_sec": 15750,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15496,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-harrison",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15918,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16137,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-santos",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15736,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-shaw",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15496,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15308,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-wheeler",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15801,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "apache-wilson",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15915,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "firewall-russell-mitchell",
+      "precision": 0.196,
+      "recall": 0.011,
+      "f1": 0.022,
+      "events_per_sec": 17869,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "bgl",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6660,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "dataset": "hdfs",
+      "precision": 0.895,
+      "recall": 0.816,
+      "f1": 0.854,
+      "events_per_sec": 17847,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-fox",
+      "precision": 0.833,
+      "recall": 0.263,
+      "f1": 0.4,
+      "events_per_sec": 13394,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-harrison",
+      "precision": 0.952,
+      "recall": 0.833,
+      "f1": 0.889,
+      "events_per_sec": 13223,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-russell-mitchell",
+      "precision": 0.875,
+      "recall": 0.778,
+      "f1": 0.824,
+      "events_per_sec": 13252,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-santos",
+      "precision": 0.941,
+      "recall": 0.842,
+      "f1": 0.889,
+      "events_per_sec": 12443,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-shaw",
+      "precision": 0.833,
+      "recall": 0.789,
+      "f1": 0.811,
+      "events_per_sec": 12920,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-wardbeck",
+      "precision": 0.75,
+      "recall": 0.158,
+      "f1": 0.261,
+      "events_per_sec": 13389,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-wheeler",
+      "precision": 0.917,
+      "recall": 0.786,
+      "f1": 0.846,
+      "events_per_sec": 13168,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "audit-wilson",
+      "precision": 0.667,
+      "recall": 0.182,
+      "f1": 0.286,
+      "events_per_sec": 12063,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "events_per_sec": 13634,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.563,
+      "recall": 0.61,
+      "f1": 0.586,
+      "events_per_sec": 11774,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-fox",
+      "precision": 0.992,
+      "recall": 1.0,
+      "f1": 0.996,
+      "events_per_sec": 9034,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-harrison",
+      "precision": 0.991,
+      "recall": 1.0,
+      "f1": 0.995,
+      "events_per_sec": 9185,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-russell-mitchell",
+      "precision": 0.827,
+      "recall": 0.885,
+      "f1": 0.855,
+      "events_per_sec": 8378,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-santos",
+      "precision": 1.0,
+      "recall": 0.978,
+      "f1": 0.989,
+      "events_per_sec": 11609,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-shaw",
+      "precision": 0.999,
+      "recall": 0.166,
+      "f1": 0.285,
+      "events_per_sec": 8849,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 11264,
+      "no_alerts": true
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-wheeler",
+      "precision": 1.0,
+      "recall": 0.189,
+      "f1": 0.318,
+      "events_per_sec": 11457,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "apache-wilson",
+      "precision": 0.979,
+      "recall": 1.0,
+      "f1": 0.989,
+      "events_per_sec": 9061,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "firewall-russell-mitchell",
+      "precision": 0.989,
+      "recall": 0.647,
+      "f1": 0.782,
+      "events_per_sec": 12104,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "bgl",
+      "precision": 0.042,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 5962,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "dataset": "hdfs",
+      "precision": 1.0,
+      "recall": 0.002,
+      "f1": 0.005,
+      "events_per_sec": 13469,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 11527,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-harrison",
+      "precision": 0.8,
+      "recall": 0.667,
+      "f1": 0.727,
+      "events_per_sec": 10715,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 11421,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-santos",
+      "precision": 0.667,
+      "recall": 0.632,
+      "f1": 0.649,
+      "events_per_sec": 10868,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-shaw",
+      "precision": 0.314,
+      "recall": 0.579,
+      "f1": 0.407,
+      "events_per_sec": 11423,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 11359,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-wheeler",
+      "precision": 1.0,
+      "recall": 0.357,
+      "f1": 0.526,
+      "events_per_sec": 10464,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "audit-wilson",
+      "precision": 0.545,
+      "recall": 0.273,
+      "f1": 0.364,
+      "events_per_sec": 11638,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 11234,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.139,
+      "recall": 0.179,
+      "f1": 0.156,
+      "events_per_sec": 10229,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6338,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-harrison",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6359,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6322,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-santos",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6406,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-shaw",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6335,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6378,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-wheeler",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6199,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "apache-wilson",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6266,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "firewall-russell-mitchell",
+      "precision": 0.495,
+      "recall": 0.001,
+      "f1": 0.003,
+      "events_per_sec": 7981,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "bgl",
+      "precision": 0.724,
+      "recall": 0.981,
+      "f1": 0.833,
+      "events_per_sec": 280,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "dataset": "hdfs",
+      "precision": 0.98,
+      "recall": 0.799,
+      "f1": 0.88,
+      "events_per_sec": 13109,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 359,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-harrison",
+      "precision": 1.0,
+      "recall": 0.125,
+      "f1": 0.222,
+      "events_per_sec": 205,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-russell-mitchell",
+      "precision": 1.0,
+      "recall": 0.111,
+      "f1": 0.2,
+      "events_per_sec": 127,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-santos",
+      "precision": 1.0,
+      "recall": 0.105,
+      "f1": 0.19,
+      "events_per_sec": 122,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-shaw",
+      "precision": 0.5,
+      "recall": 0.105,
+      "f1": 0.174,
+      "events_per_sec": 326,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-wardbeck",
+      "precision": 1.0,
+      "recall": 0.105,
+      "f1": 0.19,
+      "events_per_sec": 143,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-wheeler",
+      "precision": 1.0,
+      "recall": 0.143,
+      "f1": 0.25,
+      "events_per_sec": 584,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "audit-wilson",
+      "precision": 1.0,
+      "recall": 0.045,
+      "f1": 0.087,
+      "events_per_sec": 273,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 70,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.091,
+      "recall": 0.023,
+      "f1": 0.036,
+      "events_per_sec": 2976,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 7395,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-harrison",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 7317,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 1536,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-santos",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 2376,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-shaw",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 3241,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 4830,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-wheeler",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 5575,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "apache-wilson",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 7333,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "firewall-russell-mitchell",
+      "precision": 0.176,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 1443,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "bgl",
+      "precision": 0.655,
+      "recall": 0.644,
+      "f1": 0.649,
+      "events_per_sec": 801,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "dataset": "hdfs",
+      "precision": 0.765,
+      "recall": 0.725,
+      "f1": 0.745,
+      "events_per_sec": 1264,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 346,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-harrison",
+      "precision": 0.75,
+      "recall": 0.375,
+      "f1": 0.5,
+      "events_per_sec": 322,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-russell-mitchell",
+      "precision": 0.5,
+      "recall": 0.333,
+      "f1": 0.4,
+      "events_per_sec": 134,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-santos",
+      "precision": 0.9,
+      "recall": 0.474,
+      "f1": 0.621,
+      "events_per_sec": 49,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-shaw",
+      "precision": 0.32,
+      "recall": 0.421,
+      "f1": 0.364,
+      "events_per_sec": 296,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-wardbeck",
+      "precision": 0.75,
+      "recall": 0.316,
+      "f1": 0.444,
+      "events_per_sec": 50,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-wheeler",
+      "precision": 0.889,
+      "recall": 0.571,
+      "f1": 0.696,
+      "events_per_sec": 473,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "audit-wilson",
+      "precision": 0.4,
+      "recall": 0.091,
+      "f1": 0.148,
+      "events_per_sec": 117,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "sharefile-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 65,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "sharefile-sl100-audit",
+      "precision": 0.143,
+      "recall": 0.067,
+      "f1": 0.092,
+      "events_per_sec": 2696,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-fox",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 7031,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-harrison",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 7086,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 1522,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-santos",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 2015,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-shaw",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 1651,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-wardbeck",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 3964,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-wheeler",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 3686,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "apache-wilson",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 7293,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "firewall-russell-mitchell",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 1174,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "dataset": "bgl",
+      "precision": 0.621,
+      "recall": 0.822,
+      "f1": 0.707,
+      "events_per_sec": 709,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "dataset": "hdfs",
+      "precision": 0.62,
+      "recall": 0.453,
+      "f1": 0.523,
+      "events_per_sec": 1302,
+      "no_alerts": false
+    }
+  ],
+  "log_type_results": [
+    {
+      "detector": "new_event",
+      "log_type": "audit",
+      "precision": 0.821,
+      "recall": 0.064,
+      "f1": 0.113,
+      "events_per_sec": 19894,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "log_type": "apache-access",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16496,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "log_type": "dnsmasq",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 18012,
+      "no_alerts": true
+    },
+    {
+      "detector": "new_event",
+      "log_type": "bgl",
+      "precision": 0.999,
+      "recall": 0.795,
+      "f1": 0.885,
+      "events_per_sec": 6893,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_event",
+      "log_type": "hdfs",
+      "precision": 1.0,
+      "recall": 0.277,
+      "f1": 0.434,
+      "events_per_sec": 19855,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "log_type": "audit",
+      "precision": 0.842,
+      "recall": 0.595,
+      "f1": 0.651,
+      "events_per_sec": 16186,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "log_type": "apache-access",
+      "precision": 0.51,
+      "recall": 0.373,
+      "f1": 0.348,
+      "events_per_sec": 14096,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "log_type": "dnsmasq",
+      "precision": 0.009,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16736,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "log_type": "bgl",
+      "precision": 0.006,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6433,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value",
+      "log_type": "hdfs",
+      "precision": 1.0,
+      "recall": 0.446,
+      "f1": 0.617,
+      "events_per_sec": 16232,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "log_type": "audit",
+      "precision": 0.829,
+      "recall": 0.633,
+      "f1": 0.68,
+      "events_per_sec": 10539,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "log_type": "apache-access",
+      "precision": 0.505,
+      "recall": 0.498,
+      "f1": 0.47,
+      "events_per_sec": 10445,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "log_type": "dnsmasq",
+      "precision": 0.223,
+      "recall": 0.896,
+      "f1": 0.357,
+      "events_per_sec": 12407,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "log_type": "bgl",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6700,
+      "no_alerts": false
+    },
+    {
+      "detector": "new_value_combo",
+      "log_type": "hdfs",
+      "precision": 0.021,
+      "recall": 0.539,
+      "f1": 0.04,
+      "events_per_sec": 13766,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "log_type": "audit",
+      "precision": 0.723,
+      "recall": 0.233,
+      "f1": 0.323,
+      "events_per_sec": 16018,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "log_type": "apache-access",
+      "precision": 0.498,
+      "recall": 0.004,
+      "f1": 0.007,
+      "events_per_sec": 14707,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "log_type": "dnsmasq",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 16515,
+      "no_alerts": true
+    },
+    {
+      "detector": "value_range",
+      "log_type": "bgl",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6423,
+      "no_alerts": false
+    },
+    {
+      "detector": "value_range",
+      "log_type": "hdfs",
+      "precision": 1.0,
+      "recall": 0.446,
+      "f1": 0.617,
+      "events_per_sec": 16477,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "log_type": "audit",
+      "precision": 0.824,
+      "recall": 0.547,
+      "f1": 0.602,
+      "events_per_sec": 15321,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "log_type": "apache-access",
+      "precision": 0.622,
+      "recall": 0.505,
+      "f1": 0.483,
+      "events_per_sec": 12666,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "log_type": "dnsmasq",
+      "precision": 0.223,
+      "recall": 0.894,
+      "f1": 0.357,
+      "events_per_sec": 12488,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "log_type": "bgl",
+      "precision": 0.009,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6309,
+      "no_alerts": false
+    },
+    {
+      "detector": "charset",
+      "log_type": "hdfs",
+      "precision": 1.0,
+      "recall": 0.002,
+      "f1": 0.003,
+      "events_per_sec": 15757,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "log_type": "audit",
+      "precision": 0.643,
+      "recall": 0.811,
+      "f1": 0.661,
+      "events_per_sec": 18203,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "log_type": "apache-access",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 15726,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "log_type": "dnsmasq",
+      "precision": 0.196,
+      "recall": 0.011,
+      "f1": 0.022,
+      "events_per_sec": 17869,
+      "no_alerts": false
+    },
+    {
+      "detector": "event_sequence",
+      "log_type": "bgl",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6660,
+      "no_alerts": true
+    },
+    {
+      "detector": "event_sequence",
+      "log_type": "hdfs",
+      "precision": 0.895,
+      "recall": 0.816,
+      "f1": 0.854,
+      "events_per_sec": 17847,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "log_type": "audit",
+      "precision": 0.783,
+      "recall": 0.574,
+      "f1": 0.629,
+      "events_per_sec": 12926,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "log_type": "apache-access",
+      "precision": 0.97,
+      "recall": 0.652,
+      "f1": 0.678,
+      "events_per_sec": 9855,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "log_type": "dnsmasq",
+      "precision": 0.989,
+      "recall": 0.647,
+      "f1": 0.782,
+      "events_per_sec": 12104,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "log_type": "bgl",
+      "precision": 0.042,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 5962,
+      "no_alerts": false
+    },
+    {
+      "detector": "bigram_frequency",
+      "log_type": "hdfs",
+      "precision": 1.0,
+      "recall": 0.002,
+      "f1": 0.005,
+      "events_per_sec": 13469,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "log_type": "audit",
+      "precision": 0.577,
+      "recall": 0.269,
+      "f1": 0.283,
+      "events_per_sec": 11088,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "log_type": "apache-access",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 6325,
+      "no_alerts": true
+    },
+    {
+      "detector": "ecvc",
+      "log_type": "dnsmasq",
+      "precision": 0.495,
+      "recall": 0.001,
+      "f1": 0.003,
+      "events_per_sec": 7981,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "log_type": "bgl",
+      "precision": 0.724,
+      "recall": 0.981,
+      "f1": 0.833,
+      "events_per_sec": 280,
+      "no_alerts": false
+    },
+    {
+      "detector": "ecvc",
+      "log_type": "hdfs",
+      "precision": 0.98,
+      "recall": 0.799,
+      "f1": 0.88,
+      "events_per_sec": 13109,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "log_type": "audit",
+      "precision": 0.824,
+      "recall": 0.076,
+      "f1": 0.135,
+      "events_per_sec": 518,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "log_type": "apache-access",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 4950,
+      "no_alerts": true
+    },
+    {
+      "detector": "deeplog",
+      "log_type": "dnsmasq",
+      "precision": 0.176,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 1443,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "log_type": "bgl",
+      "precision": 0.655,
+      "recall": 0.644,
+      "f1": 0.649,
+      "events_per_sec": 801,
+      "no_alerts": false
+    },
+    {
+      "detector": "deeplog",
+      "log_type": "hdfs",
+      "precision": 0.765,
+      "recall": 0.725,
+      "f1": 0.745,
+      "events_per_sec": 1264,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "log_type": "audit",
+      "precision": 0.581,
+      "recall": 0.265,
+      "f1": 0.326,
+      "events_per_sec": 455,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "log_type": "apache-access",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 4281,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "log_type": "dnsmasq",
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "events_per_sec": 1174,
+      "no_alerts": true
+    },
+    {
+      "detector": "logbert",
+      "log_type": "bgl",
+      "precision": 0.621,
+      "recall": 0.822,
+      "f1": 0.707,
+      "events_per_sec": 709,
+      "no_alerts": false
+    },
+    {
+      "detector": "logbert",
+      "log_type": "hdfs",
+      "precision": 0.62,
+      "recall": 0.453,
+      "f1": 0.523,
+      "events_per_sec": 1302,
+      "no_alerts": false
+    }
+  ]
+}

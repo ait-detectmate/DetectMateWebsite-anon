@@ -1,0 +1,635 @@
+/* DetectMate website
+   Brand blue and grey were sampled from the earlier logo (the current master
+   uses #4E5AA5 and #C6C6C6). The grey (#C5C5C5) is 1.7:1 on white: use it
+   for shapes and rules, never for text. */
+
+:root {
+  --home-slow: 1.6;   /* site.js motion.SLOW: the home page's looping animations run this many times slower */
+  --flow-slow: calc(var(--home-slow) / 2);   /* the home pipeline runs twice as fast (site.js FLOW_FAST) */
+  --brand: #4957A5;
+  --brand-dark: #35408A;
+  --brand-tint: #F3F4FA;
+  --grey: #C5C5C5;
+
+  --ink: #1A1B22;
+  --body: #474956;
+  --muted: #62646F;
+  --line: #E3E3E6;
+  --line-soft: #EEEEF0;
+  --panel: #F5F5F7;
+  --paper: #FFFFFF;
+  --code-bg: #1A1B22;
+  --code-fg: #E6E6EA;
+  --code-dim: #9A9CA8;
+
+  --alert: #C8700A;
+  --alert-bg: #FDF3E4;
+  --alert-ink: #6B3D05;
+  --attackmate: #049899;
+
+  --display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --text: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* the D's 45-degree chamfer on the right-hand corners */
+  --chamfer: 10px;
+
+  --gutter: clamp(16px, 4vw, 56px);
+  --max: 1200px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+/* the sticky header's height (measured), so an anchor lands below it, not under it:
+   69px = one row (nav beside the brand), 117px = two rows (nav wrapped under the brand; this
+   happens up to 536px with the real fonts, 533px with fallback fonts, so the rule starts at 540px),
+   105px = the compact header below 480px. Change the nav or the header and re-measure all three. */
+html { --header-h: 69px; scroll-padding-top: var(--header-h); }
+@media (max-width: 540px) { html { --header-h: 117px; } }
+@media (max-width: 479px) { html { --header-h: 105px; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; }
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-dark); text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+code { font-family: var(--mono); font-size: 0.92em; }
+p code, li code { background: var(--panel); padding: 1px 5px; }
+
+h1, h2, h3 { font-family: var(--display); color: var(--ink); margin: 0; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--gutter); }
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink); color: #fff; padding: 10px 14px; z-index: 30;
+}
+.skip:focus { left: 12px; top: 12px; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- header */
+
+.site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: var(--paper); }
+.site-header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px 32px; flex-wrap: wrap; padding-block: 14px;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand:hover { text-decoration: none; }
+.brand svg { height: 32px; width: auto; overflow: visible; }
+.brand polygon { transform-box: fill-box; transform-origin: center; }
+.brand img { height: 19px; width: auto; }
+
+.site-nav { display: flex; align-items: center; gap: 6px 24px; flex-wrap: wrap; font-size: 15px; }
+.site-nav a { color: var(--ink); }
+.site-nav a[aria-current="page"] {
+  color: var(--brand);
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px;
+}
+
+/* Docs and GitHub: <details> menus, so they open without JS; site.js only closes them */
+.menu { position: relative; }
+.menu__toggle { display: flex; align-items: center; gap: 8px; list-style: none; cursor: pointer; color: var(--ink); }
+.menu__toggle::-webkit-details-marker { display: none; }
+.menu__toggle::after {
+  content: ""; width: 6px; height: 6px; margin-top: -4px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg);
+}
+.menu[open] > .menu__toggle::after { margin-top: 4px; transform: rotate(225deg); }
+.menu__toggle:hover { color: var(--brand-dark); }
+.menu__list {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 30;
+  min-width: 8.5em; margin: 0; padding: 6px 0; list-style: none;
+  background: var(--paper); border: 1px solid var(--line); box-shadow: 0 8px 24px rgb(26 27 34 / 0.08);
+}
+.menu__list a { display: block; padding: 8px 16px; white-space: nowrap; }
+.menu__list a:hover { background: var(--panel); color: var(--brand); text-decoration: none; }
+/* below 480 px: row 1 is the brand with the GitHub button at the right edge (taken out of the
+   nav flow, so its menu list still opens right-aligned inside the viewport); row 2 is the text
+   links and the Docs menu on one line */
+@media (max-width: 479px) {
+  .site-header__inner { position: relative; gap: 4px 16px; }
+  .brand { min-height: 40px; }
+  .menu--github { position: absolute; top: 14px; right: var(--gutter); }
+  .site-header .site-nav { flex: 1 1 100%; gap: 4px 14px; font-size: 14px; }
+  .site-nav > a, .site-nav .menu:not(.menu--github) .menu__toggle { display: inline-flex; align-items: center; min-height: 32px; }
+}
+/* at 320 px the brand and the button would touch, so both get smaller */
+@media (max-width: 359px) {
+  .brand svg { height: 26px; }
+  .brand img { height: 15px; }
+  .menu--github .menu__toggle { padding: 9px 18px 9px 12px; font-size: 13px; }
+}
+
+/* --------------------------------------------------------------- buttons */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 46px; padding: 12px 26px 12px 20px;
+  font-family: var(--text); font-size: 15px; font-weight: 500; line-height: 1.2;
+  border: 0; cursor: pointer;
+}
+.btn:hover { text-decoration: none; }
+.btn--primary { background: var(--brand); color: #fff; }
+/* computed on each element, so a local --chamfer (8px, 11px, 12px) takes effect */
+.btn--primary, .stage__box, .stage__inner, .tk--grp {
+  clip-path: polygon(0 0, calc(100% - var(--chamfer)) 0, 100% var(--chamfer),
+                     100% calc(100% - var(--chamfer)), calc(100% - var(--chamfer)) 100%, 0 100%);
+}
+.btn--primary:hover { background: var(--brand-dark); color: #fff; }
+.btn--outline { color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+.btn--outline:hover { color: var(--brand); box-shadow: inset 0 0 0 1.5px var(--brand); }
+.site-nav .btn--small { min-height: 40px; padding: 9px 22px 9px 16px; font-size: 14px; color: #fff; --chamfer: 8px; }
+.site-nav .btn--small:hover { color: #fff; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ----------------------------------------------------------------- chips */
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips[hidden] { display: none; }
+.chip {
+  min-height: 40px; padding: 8px 14px;
+  font-family: var(--mono); font-size: 13px; color: var(--muted);
+  background: var(--paper); border: 1px solid #D6D6DA; cursor: pointer;
+}
+.chip:hover { color: var(--ink); border-color: var(--ink); }
+.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* ------------------------------------------------------------------ hero */
+
+.hero { border-bottom: 1px solid var(--line); }
+/* one column at every width: the code panel sits under the copy, as wide as the page */
+.hero__inner {
+  display: grid; grid-template-columns: minmax(0, 1fr);
+  gap: clamp(32px, 4vw, 48px); padding-block: clamp(40px, 7vw, 80px);
+}
+.hero__copy { display: flex; flex-direction: column; gap: 20px; }
+.eyebrow {
+  margin: 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--brand);
+}
+.hero h1 {
+  font-size: clamp(34px, 5vw, 50px); line-height: 1.08; font-weight: 700;
+  letter-spacing: -0.03em; text-wrap: balance;
+}
+.lede { margin: 0; font-size: 18px; line-height: 1.62; color: var(--body); max-width: 60ch; text-wrap: pretty; }
+
+/* The home intro (site.js). The inline script in layout.html adds is-intro on the
+   first home visit of a tab session; site.js removes it in the frame its animations
+   start. This list must match what site.js animates; after 3 s it shows anyway. */
+html.is-intro .brand polygon, html.is-intro .brand img, html.is-intro .site-nav > *,
+html.is-intro .hero .eyebrow, html.is-intro .hero h1, html.is-intro .hero .actions > *,
+html.is-intro .code > pre, html.is-intro .code__term, html.is-intro .code__lines, html.is-intro .code__stdout,
+html.is-intro .stage, html.is-intro .flow__rail, html.is-intro .points li {
+  opacity: 0; animation: dm-failsafe 0s 3s forwards;
+}
+@keyframes dm-failsafe { to { opacity: 1; } }
+/* a group below the fold waits for its first entry; a card draws its border on an overlay */
+.is-waiting { opacity: 0; }
+.stage__draw { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+/* the headline, split into one wiped line each while the intro runs */
+.ln { display: block; position: relative; overflow-x: clip; }   /* keeps the blade inside the line */
+.ln__txt { display: inline-block; padding: .1em 0 .2em; margin: -.1em 0 -.2em; }
+.ln__blade { position: absolute; left: 0; top: 0; background: var(--brand); opacity: 0; pointer-events: none; }
+
+/* Library | Service above the code panel: CSS-only radios, labels styled as the frames' chips.
+   Both panels share one grid cell, so a switch never moves the page; the unchecked one is hidden
+   from view, the tab order and screen readers. */
+.run { position: relative; display: grid; gap: 12px; min-width: 0; }
+.run__panels { display: grid; grid-template-columns: minmax(0, 1fr); }
+.run__panels > .code { grid-area: 1 / 1; }
+#run-library:checked ~ .run__panels .code--service,
+#run-service:checked ~ .run__panels .code--library { visibility: hidden; }
+.run .chip { display: inline-flex; align-items: center; }
+#run-library:focus-visible ~ .run__switch [for="run-library"],
+#run-service:focus-visible ~ .run__switch [for="run-service"] { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+.code { margin: 0; background: var(--code-bg); color: var(--code-fg); min-width: 0; }
+/* the Service panel is shorter: its YAML takes the spare height, so its panes line up with the Library's */
+.code--service { display: flex; flex-direction: column; }
+.code--service > pre { flex-grow: 1; }
+.code__label {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 10px 20px; border-bottom: 1px solid #2C2D36;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--code-dim);
+}
+/* the panel is kept short enough to fit a laptop screen whole (about 590px): the 1.6 line height
+   and the paddings here and in the panes below set its height */
+.code pre { margin: 0; padding: 12px 0 14px; overflow-x: auto; }
+/* a block, so its own 1.6 line height sets each line (not the pre's), with or without the lines split by site.js */
+.code code { display: block; min-width: max-content; padding: 0 20px; font-size: 12.5px; line-height: 1.6; background: none; }
+.code .cl { display: block; min-height: 1.6em; margin: 0 -20px; padding: 0 20px; }   /* full width, so a flash spans the panel */
+.code .k { color: #A9B4F0; }
+.code .s { color: #F2C48D; }
+.code .c { color: var(--code-dim); }
+
+/* the status in the caption and the typing caret, shown by site.js */
+.code__status { display: flex; align-items: center; gap: 8px; letter-spacing: 0.04em; text-transform: none; line-height: 1; }
+.code__status[hidden] { display: none; }
+.code__status i { width: 7px; height: 7px; border-radius: 50%; background: #4A4C58; }
+.code__status.is-running i { background: #A9B4F0; animation: dm-pulse 1.6s ease-in-out infinite; }
+@keyframes dm-pulse { 50% { opacity: 0.25; } }
+.code__caret {
+  display: inline-block; width: 0.55em; height: 1.1em; margin-left: 1px; vertical-align: -0.18em;
+  background: #A9B4F0; animation: dm-blink 1s steps(1) infinite;
+}
+@keyframes dm-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .code__status i, .code__caret { animation: none; } }
+
+/* the panes under the code: audit lines coming in, and what print(alert) writes;
+   the Service panel adds the terminal that starts it */
+.code__term, .code__in, .code__out { border-top: 1px solid #2C2D36; }
+.code__pane-label {
+  margin: 0; padding: 8px 20px 2px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--code-dim);
+}
+.code__lines, .code__stdout {
+  display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden;
+  padding-bottom: 8px; font-family: var(--mono); font-size: 12px; line-height: 1.6;
+}
+.code__lines { height: calc(5 * 1.6em + 8px); }
+.code__stdout { height: calc(6 * 1.6em + 8px); padding-inline: 20px; white-space: pre; }
+/* the Service's alert is one JSON line: it wraps (after a comma where it can) so the value stays readable */
+.code--service .code__stdout { white-space: pre-wrap; overflow-wrap: anywhere; }
+.code__term { padding-bottom: 8px; font-family: var(--mono); font-size: 12px; line-height: 1.6; }
+.code__tline { min-height: 1.6em; padding: 0 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.code__line {
+  flex-shrink: 0; display: flex; gap: 12px; padding: 0 20px 0 18px;
+  border-left: 2px solid transparent; white-space: nowrap; overflow: hidden;
+}
+/* slowed with the home page's looping animations (--home-slow) */
+.code__id { flex-shrink: 0; width: 2.2em; color: transparent; transition: color calc(0.3s * var(--home-slow)); }
+.code__txt { overflow: hidden; text-overflow: ellipsis; color: var(--code-fg); transition: color calc(0.8s * var(--home-slow)); }
+.code__line .v { transition: background-color calc(0.3s * var(--home-slow)), color calc(0.3s * var(--home-slow)); }
+.code__line.is-parsed .code__id { color: var(--code-dim); }
+.code__line.is-parsed .v { background: rgba(169, 180, 240, 0.16); color: #CDD3F8; }
+.code__line.is-old .code__txt { color: #7D7F8C; }
+.code__line.is-old .v { background: transparent; color: #8E94BE; }
+/* amber: the detector fired on this line */
+.code__line.is-fired { border-left-color: var(--alert); background: rgba(200, 112, 10, 0.11); }
+.code__line.is-fired .v--flag { background: rgba(200, 112, 10, 0.38); color: #FFE0B8; }
+.code__line.is-fired .code__id { color: #F2B266; }
+.code__alert { flex-shrink: 0; overflow: hidden; text-overflow: ellipsis; color: #F2B266; }
+.code__key { color: var(--code-dim); }
+
+/* -------------------------------------------------------------- sections */
+
+.section { padding-block: clamp(32px, 5vw, 56px); }
+.section--tight { padding-top: 8px; }
+.section--rule { border-top: 1px solid var(--line); }
+.section__label {
+  margin-bottom: 18px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.section__title { font-size: 22px; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 10px; }
+.section__intro { margin: 0 0 20px; color: var(--body); }
+
+.split { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 48px; align-items: start; }
+.split--even { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.page-head { padding-block: clamp(32px, 5vw, 48px) 20px; }
+.page-head__inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px 40px; flex-wrap: wrap; }
+.page-head h1 { font-size: clamp(28px, 4vw, 38px); font-weight: 700; letter-spacing: -0.028em; margin-bottom: 10px; }
+.page-head .lede { font-size: 16px; }
+
+.prose p { margin: 0 0 12px; color: var(--body); }
+
+/* -------------------------------------------------------------- pipeline */
+
+.pipeline {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 44px;
+}
+/* The li carries the chevron; the box inside it carries the chamfer.
+   Two stacked layers (stroke, then fill inset 2px) give the angled
+   corner a real border line, which clip-path on a bordered box can't. */
+.stage { position: relative; display: flex; }
+.stage__box {
+  --stroke: var(--ink); --fill: var(--paper);
+  flex: 1; display: flex; padding: 2px; background: var(--stroke);
+  --chamfer: 12px; transition: background-color .35s;
+}
+.stage__inner {
+  flex: 1; display: flex; flex-direction: column; gap: 6px;
+  padding: 16px 22px 16px 16px; background: var(--fill);
+  --chamfer: 11px; transition: background-color .35s;
+}
+.stage__name { font-family: var(--display); font-size: 17px; font-weight: 600; }
+.stage__desc { font-size: 14px; line-height: 1.5; color: var(--body); }
+.stage__count { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: auto; padding-top: 2px; }
+.stage--parser .stage__box { --stroke: var(--grey); }
+.stage--detector .stage__box { --stroke: var(--brand); --fill: var(--brand-tint); }
+.stage--detector .stage__name, .stage--detector .stage__count { color: var(--brand); }
+.stage--sink .stage__box { background: none; padding: 0; clip-path: none; border: 2px dashed var(--grey); }
+.stage--sink .stage__inner { clip-path: none; }
+.stage--sink .stage__name { color: var(--muted); }
+
+/* the logo's grey chevron between stages, centred in the grid gap */
+.stage:not(:last-child)::after {
+  content: ""; position: absolute; top: 50%; right: -31px;
+  width: 18px; height: 22px; margin-top: -11px; background: var(--grey);
+  clip-path: polygon(0 0, 44% 0, 100% 50%, 44% 100%, 0 100%, 56% 50%);
+}
+
+/* Events flow along a rail under the cards (site.js moves the tokens). The rail
+   ends at the sink's stop: the centre of the 4th of 4 columns with 44px gaps. */
+.flow { position: relative; }
+.flow__rail { position: relative; height: 64px; }
+.flow__rail::before {
+  content: ""; position: absolute; left: 0; top: 50%; width: calc(87.5% + 16.5px); height: 1px;
+  background: var(--line);
+}
+.flow__src {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%); padding-right: 8px;
+  font-family: var(--mono); font-size: 11px; line-height: 1; color: var(--muted); background: var(--paper);
+}
+.stage__stop {
+  position: absolute; top: calc(100% + 32px); left: 50%; width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  background: var(--grey); transform: rotate(45deg); z-index: 1;   /* over the rail line */
+}
+.flow__tokens { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.tk { position: absolute; left: 0; top: 0; will-change: translate; }
+.tk--raw {
+  width: 18px; height: 12px; background: repeating-linear-gradient(180deg, #A9AAB2 0 2px, transparent 2px 5px);
+  -webkit-mask-image: linear-gradient(90deg, #000 60%, rgba(0, 0, 0, 0.35));
+  mask-image: linear-gradient(90deg, #000 60%, rgba(0, 0, 0, 0.35));
+}
+.tk--ev {
+  width: 12px; height: 14px; background: var(--brand); transition: background-color calc(.2s * var(--flow-slow));
+  clip-path: polygon(0 0, 42% 0, 100% 50%, 42% 100%, 0 100%, 58% 50%);
+}
+.tk--ev.tk--alert { background: var(--alert); }
+.tk--ring { width: 14px; height: 14px; border: 2px solid var(--alert); border-radius: 50%; }
+.tk--grp {
+  --chamfer: 6px; padding: 5px 12px 5px 9px; white-space: nowrap;
+  font-family: var(--mono); font-size: 11px; font-weight: 500; line-height: 1;
+  background: var(--alert-bg); color: var(--alert-ink); box-shadow: inset 3px 0 var(--alert);
+}
+/* the cards pulse as events pass; only the detector turns amber, when it fires */
+/* paced with the home flow (--flow-slow) */
+.pipeline .stage__box, .pipeline .stage__inner { transition-duration: calc(.35s * var(--flow-slow)); }
+.stage.is-ping .stage__box { --stroke: var(--brand-dark); }
+.stage--parser.is-ping .stage__box { --stroke: #9A9CA8; }
+.stage--detector.is-fire .stage__box { --stroke: var(--alert); --fill: var(--alert-bg); }
+.stage--sink.is-recv .stage__box { border-color: var(--brand); }
+
+/* ---------------------------------------------------------------- points */
+
+.points {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px;
+}
+.points li { position: relative; padding-left: 24px; }
+.points li::before {
+  content: ""; position: absolute; left: 0; top: 7px;
+  width: 12px; height: 14px; background: var(--brand);
+  clip-path: polygon(0 0, 42% 0, 100% 50%, 42% 100%, 0 100%, 58% 50%);
+}
+.points h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.points p { margin: 0; font-size: 15px; color: var(--body); }
+
+.family {
+  background: var(--panel); border-left: 3px solid var(--brand);
+  padding: 22px 24px; display: flex; flex-direction: column; gap: 12px;
+}
+.family .section__label { margin-bottom: 0; }
+.family p { margin: 0; font-size: 15px; color: var(--body); }
+.family__attack {
+  display: flex; align-items: center; gap: 10px;
+  padding-top: 14px; border-top: 1px solid var(--line);
+}
+.family__attack svg { flex-shrink: 0; fill: var(--attackmate); }
+
+/* ------------------------------------------------------------ benchmarks */
+
+.notice {
+  display: flex; gap: 12px; align-items: flex-start;
+  margin-bottom: 20px; padding: 13px 16px;
+  background: var(--alert-bg); border-left: 3px solid var(--alert); color: var(--alert-ink);
+}
+.notice svg { flex-shrink: 0; margin-top: 3px; }
+.notice p { margin: 0; font-size: 15px; }
+.notice code { background: rgba(255, 255, 255, 0.6); }
+.bench-meta { margin: 0 0 16px; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+/* one frame: the switch bar, then the blocks. The frame's chips are smaller and quieter than
+   the plain chips, and a pressed one is tinted, not filled. */
+.frame__bar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; margin-bottom: 12px;
+}
+.frame .chips, .run .chips { align-items: center; gap: 6px; }
+.chips__label { font-size: 13px; font-weight: 500; color: var(--muted); margin-right: 6px; }
+.frame .chip, .run .chip { min-height: 34px; padding: 6px 12px; color: var(--body); }
+.frame .chip:hover, .run .chip:hover { color: var(--ink); border-color: var(--ink); }
+.frame .chip[aria-pressed="true"],
+#run-library:checked ~ .run__switch [for="run-library"],
+#run-service:checked ~ .run__switch [for="run-service"] {
+  color: var(--brand-dark); background: var(--brand-tint); border-color: var(--brand);
+  box-shadow: inset 0 0 0 1px var(--brand);
+}
+.frame__bar[hidden] { display: none; }
+.bench-block { margin-bottom: 36px; }
+/* with site.js one block shows at a time */
+.frame__bar:not([hidden]) ~ .bench-block { margin-bottom: 0; }
+/* The page is large, so it paints long before site.js runs. With JavaScript on, the inline
+   script in layout.html adds js to <html> first, and until site.js adds is-live to a frame
+   these rules show what it will: the bar and the default block (Plot, Log type, Precision, as
+   in render_frame_bar and site.js). The plots stay blank for site.js to grow in. If no frame
+   is live at load, the script removes js again. */
+html.js .frame:not(.is-live) .frame__bar { display: flex; }
+html.js .frame:not(.is-live) .bench-block { margin-bottom: 0; }
+html.js .frame:not(.is-live) .bench-block:not([data-block-kind="plot"][data-block-view="log-type"][data-block-metric="precision"]) { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .frame:not(.is-live) td.plot svg { visibility: hidden; }
+}
+.block__title {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 8px 24px; margin: 4px 0 10px;
+}
+.block__title h3 { font-size: 16px; font-weight: 600; }
+/* a fixed height, not a max-height: switching blocks never moves what is below the frame */
+.frame__scroll { height: min(36rem, 75vh); overflow: auto; border: 1px solid var(--line); }
+/* separate borders: collapsed ones don't move with sticky cells */
+.bench {
+  --lead1: 11.5rem; /* width of the first lead column, where the second one sticks */
+  width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 0; font-size: 14px;
+}
+.bench th, .bench td { padding: 0 12px; height: 42px; text-align: left; border-bottom: 1px solid var(--line-soft); }
+.bench thead th {
+  height: 46px; background: var(--panel); border-bottom: 1px solid var(--line);
+  font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.bench thead th { text-align: center; }
+.bench thead th.lead { text-align: left; vertical-align: bottom; }
+.bench thead th.h__group { border-bottom: 1px solid var(--line); }
+.bench thead tr + tr th { height: 52px; }
+/* the header rows stay put while the frame scrolls, and in tables the lead columns too */
+.bench thead th { position: sticky; top: 0; z-index: 2; }
+.bench thead tr + tr th { top: 46px; }
+.bench thead th.lead { z-index: 3; }
+.bench:not(.bench--plot) thead th.lead:first-child,
+.bench:not(.bench--plot) tbody tr > :first-child:not(.bench__divider) {
+  position: sticky; left: 0; width: var(--lead1); min-width: var(--lead1); max-width: var(--lead1);
+}
+.bench:not(.bench--plot) thead th.lead + th.lead,
+.bench:not(.bench--plot) tbody tr > :nth-child(2) {
+  position: sticky; left: var(--lead1); box-shadow: inset -1px 0 var(--line);
+}
+.bench:not(.bench--plot) tbody tr > :first-child:not(.bench__divider),
+.bench:not(.bench--plot) tbody tr > :nth-child(2) { z-index: 1; background: var(--paper); }
+.h__name, .h__sub { display: block; }
+.h__name { white-space: nowrap; }
+.h__sub { margin-top: 2px; font-size: 10px; letter-spacing: 0.04em; text-transform: none; font-weight: 400; }
+.bench thead a { color: var(--muted); }
+.bench tbody th { font-weight: 500; white-space: nowrap; }
+.bench tbody th a { color: var(--ink); }
+.bench tbody tr:last-child > * { border-bottom: 0; }
+.row__num { display: inline-block; width: 26px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.tag { font-family: var(--mono); font-size: 11px; padding: 2px 7px; background: var(--panel); color: var(--muted); display: inline-block; }
+/* value as dark text plus a bar underneath — never text on a tint */
+.bench .cell { height: 50px; text-align: center; font-family: var(--mono); font-size: 13px; min-width: 96px; }
+.cell__val { display: block; }
+.cell__val--none { color: var(--muted); }
+/* the plot rows' tooltip (site.js): the numbers .plot__nums holds; below the header (20) */
+.tip {
+  position: fixed; top: 0; left: 0; z-index: 15; max-width: min(22rem, calc(100vw - 8px));
+  padding: 8px 12px; background: var(--paper); color: var(--ink); border: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgb(26 27 34 / 0.08); font-size: 13px; line-height: 1.6; pointer-events: none;
+}
+.tip[hidden] { display: none; }
+.tip .plot__n { font-family: var(--mono); font-size: 12px; }
+.bench tbody th.bench__divider {
+  height: 34px; background: var(--panel); border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.bench__divider span { position: sticky; left: 12px; }
+.bench .bench__skip { color: var(--muted); font-style: italic; text-align: center; }
+/* plots: a lead column of --labw, then one SVG per row on the percentage scale of the axis
+   in the header row. Each plot cell draws the gridlines every --tick (set on the table),
+   so they run unbroken through rows of any height. */
+.bench--plot { --labw: 260px; --pad: 22px; min-width: 0; table-layout: fixed; }
+.bench--plot thead th {
+  height: 40px; background: var(--paper); font-size: 12px; letter-spacing: 0; text-transform: none;
+}
+.bench--plot thead th.lead { width: var(--labw); padding: 0 12px 0 14px; vertical-align: middle; }
+.bench--plot thead th.plot { padding: 0 var(--pad); vertical-align: middle; }
+.axis { position: relative; height: 34px; }
+.axis span {
+  position: absolute; bottom: 8px; transform: translateX(-50%);
+  font-family: var(--mono); font-size: 12px; color: var(--muted);
+}
+.bench--plot tbody th { height: 40px; padding: 6px 12px 6px 14px; white-space: normal; }
+.bench--plot .row__num { width: auto; min-width: 1.6em; margin-right: 8px; font-size: 12px; }
+.bench--plot .tag { margin-left: 8px; font-weight: 400; }
+.bench--plot td:last-child { position: relative; z-index: 0; height: 40px; padding: 0 var(--pad); }
+.bench--plot td:last-child::before {
+  content: ""; position: absolute; inset: 0 var(--pad); z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / var(--tick) 100%;
+  border-right: 1px solid var(--line);
+}
+.bench--plot svg { display: block; overflow: visible; }
+.bench--plot .box { fill: var(--brand-tint); stroke: var(--brand); stroke-width: 1; }
+.bench--plot .mid { stroke: var(--ink); stroke-width: 2.5; }
+.bench--plot .wh { stroke: var(--ink); stroke-width: 1.25; }
+.bench--plot .bench__skip, .bench--plot .cell__val--none {
+  font-family: var(--mono); font-size: 12px; color: var(--muted); font-style: normal; text-align: left;
+}
+/* "not evaluated", "no alerts" and "—" sit on a patch of paper above the gridlines, so the
+   lines stop behind the words; the negative margin keeps the words on the 0 tick */
+.bench--plot .cell__val--none { position: relative; margin-left: -4px; padding: 0 4px; background: var(--paper); }
+/* the last row above keeps its line: tr:last-child drops it, so the divider draws it */
+.bench--plot tbody th.bench__divider {
+  height: auto; padding: 14px 14px 6px; background: var(--paper); border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: 0.06em;
+}
+@media (max-width: 600px) {
+  .frame__bar { gap: 10px; }
+  .chips__label { min-width: 5.5em; }
+  /* tables: only the detector's name stays put, so the values keep most of the width */
+  [data-frame="detectors"] .bench:not(.bench--plot) thead th.lead + th.lead,
+  [data-frame="detectors"] .bench:not(.bench--plot) tbody tr > :nth-child(2) { left: auto; box-shadow: none; }
+  [data-frame="detectors"] .bench:not(.bench--plot) tbody tr > :first-child { box-shadow: inset -1px 0 var(--line); }
+  /* plots: each row stacks its label over its plot, and the axis spans the width */
+  .bench--plot { --pad: 16px; }
+  .bench--plot, .bench--plot thead, .bench--plot tbody, .bench--plot th, .bench--plot td { display: block; }
+  .bench--plot thead { position: sticky; top: 0; z-index: 2; }
+  .bench--plot tr { display: flex; flex-wrap: wrap; }
+  .bench--plot tr > :not(:last-child) { border-bottom: 0; }
+  .bench--plot thead th { position: static; }
+  .bench--plot thead th.lead { display: none; }
+  .bench--plot thead th.plot { flex: 1 1 100%; }
+  .bench--plot tbody th { flex: 1 1 0; min-width: 0; height: auto; padding: 8px 12px 0; }
+  .bench--plot td:last-child { flex: 1 1 100%; }
+  /* a row without a plot says so in one line under its label */
+  .bench--plot td.bench__skip, .bench--plot td:last-child:not(:has(svg)) { height: auto; padding-block: 2px 10px; }
+  .bench--plot tbody th.bench__divider { flex: 1 1 100%; padding: 14px 12px 6px; }
+}
+
+/* ---------------------------------------------------------------- footer */
+
+.site-footer { border-top: 1px solid var(--line); background: var(--panel); }
+.site-footer__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px 32px; flex-wrap: wrap; padding-block: 24px;
+  font-size: 14px; color: var(--muted);
+}
+.site-footer__brand { display: flex; align-items: center; gap: 10px; }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.site-footer__links a { color: var(--body); }
+.site-footer__links .link--attackmate { color: #03706F; }
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 960px) {
+  .split, .split--even { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 44px; }
+  /* end of the first row: the flow wraps, so no chevron pointing off-screen */
+  .stage:nth-child(2)::after { display: none; }
+}
+
+/* two rows of cards: no rail */
+@media (min-width: 601px) and (max-width: 960px) {
+  .flow__rail, .stage__stop { display: none; }
+}
+
+@media (max-width: 600px) {
+  /* the rail runs down the cards' left side; each card's chevron becomes a segment of it */
+  .flow { padding-top: 30px; }
+  .pipeline { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-left: 40px; }
+  .pipeline .stage::after {
+    content: ""; display: block; position: absolute; top: -14px; bottom: 0; left: -22px; right: auto;
+    width: 1px; height: auto; margin-top: 0; background: var(--line); clip-path: none; transform: none;
+  }
+  .pipeline .stage:first-child::after { top: -12px; }
+  .pipeline .stage:last-child::after { bottom: 50%; }
+  .stage__stop { top: 50%; left: -22px; }
+  .flow__rail { position: static; height: 0; }
+  .flow__rail::before { display: none; }
+  .flow__src { top: 6px; left: 32px; transform: none; padding: 0; }
+  .points { grid-template-columns: minmax(0, 1fr); }
+  .lede { font-size: 17px; }
+  /* narrower column gap so the four links plus the menus fit one nav row for as long as they can */
+  .site-nav { gap: 6px 16px; }
+}

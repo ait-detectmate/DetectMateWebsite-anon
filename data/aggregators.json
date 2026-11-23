@@ -1,0 +1,28 @@
+{
+  "aggregators": [
+    {
+      "id": "basic_concatenation",
+      "name": "Basic Concat",
+      "description": "Joins the most recent alerts into one record, with their IDs and timestamps.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/alert_aggregators/basic_concatenation/"
+    },
+    {
+      "id": "logid_count",
+      "name": "LogID Count",
+      "description": "Counts how often each log ID appears in alerts and reports the ones past a threshold.",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/alert_aggregators/logid_count/"
+    },
+    {
+      "id": "time_delta",
+      "name": "Time Delta",
+      "description": "Groups alerts that arrive close together in time (Landauer et al.).",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/alert_aggregators/time_delta/"
+    },
+    {
+      "id": "alertbert",
+      "name": "AlertBERT",
+      "description": "Groups alerts by time and by masked-language-model embeddings of them (Karner et al.).",
+      "docs": "https://ait-detectmate.github.io/DetectMateLibrary/latest/alert_aggregators/alertbert/"
+    }
+  ]
+}
